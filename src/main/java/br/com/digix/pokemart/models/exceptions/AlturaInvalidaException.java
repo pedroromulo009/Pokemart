@@ -1,4 +1,4 @@
-package br.com.digix.pokemart.models;
+package br.com.digix.pokemart.models.exceptions;
 
 public class AlturaInvalidaException extends Exception {
 

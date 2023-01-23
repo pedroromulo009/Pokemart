@@ -1,5 +1,9 @@
 package br.com.digix.pokemart.models;
 
+import br.com.digix.pokemart.models.exceptions.AlturaInvalidaException;
+import br.com.digix.pokemart.models.exceptions.FelicidadeInvalidaException;
+import br.com.digix.pokemart.models.exceptions.NivelInvalidoException;
+import br.com.digix.pokemart.models.exceptions.PesoInvalidoException;
 import lombok.Getter;
 
 @Getter

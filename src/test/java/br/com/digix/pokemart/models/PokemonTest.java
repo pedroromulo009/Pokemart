@@ -4,6 +4,10 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import br.com.digix.pokemart.builders.PokemonBuilder;
+import br.com.digix.pokemart.models.exceptions.AlturaInvalidaException;
+import br.com.digix.pokemart.models.exceptions.FelicidadeInvalidaException;
+import br.com.digix.pokemart.models.exceptions.NivelInvalidoException;
+import br.com.digix.pokemart.models.exceptions.PesoInvalidoException;
 
 public class PokemonTest {
 

@@ -1,10 +1,10 @@
 package br.com.digix.pokemart.builders;
 
-import br.com.digix.pokemart.models.AlturaInvalidaException;
-import br.com.digix.pokemart.models.FelicidadeInvalidaException;
-import br.com.digix.pokemart.models.NivelInvalidoException;
-import br.com.digix.pokemart.models.PesoInvalidoException;
 import br.com.digix.pokemart.models.Pokemon;
+import br.com.digix.pokemart.models.exceptions.AlturaInvalidaException;
+import br.com.digix.pokemart.models.exceptions.FelicidadeInvalidaException;
+import br.com.digix.pokemart.models.exceptions.NivelInvalidoException;
+import br.com.digix.pokemart.models.exceptions.PesoInvalidoException;
 
 public class PokemonBuilder {
 

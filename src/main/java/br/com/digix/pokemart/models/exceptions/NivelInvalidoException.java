@@ -1,9 +1,9 @@
-package br.com.digix.pokemart.models;
+package br.com.digix.pokemart.models.exceptions;
 
 public class NivelInvalidoException extends Exception {
 
     public NivelInvalidoException() {
-        super("O Nivel nao pode ser menor que um.");
+        super("O Nivel deve estar entre um e cem.");
     }
     
 }
