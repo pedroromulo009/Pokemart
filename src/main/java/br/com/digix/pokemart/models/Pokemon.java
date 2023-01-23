@@ -2,6 +2,7 @@ package br.com.digix.pokemart.models;
 
 import br.com.digix.pokemart.models.exceptions.AlturaInvalidaException;
 import br.com.digix.pokemart.models.exceptions.FelicidadeInvalidaException;
+import br.com.digix.pokemart.models.exceptions.NaoPossuiAtaqueException;
 import br.com.digix.pokemart.models.exceptions.NivelInvalidoException;
 import br.com.digix.pokemart.models.exceptions.PesoInvalidoException;
 import lombok.Getter;
@@ -15,18 +16,27 @@ public class Pokemon {
     private float peso;
     private int felicidade;
     private int nivel;
+    private Ataque ataque;
 
-    public Pokemon(String nome, char genero, float altura, float peso, int felicidade, int nivel) throws FelicidadeInvalidaException, AlturaInvalidaException, PesoInvalidoException, NivelInvalidoException {
+    public Pokemon(String nome, char genero, float altura, float peso, int felicidade, int nivel, Ataque ataque) throws FelicidadeInvalidaException, AlturaInvalidaException, PesoInvalidoException, NivelInvalidoException, NaoPossuiAtaqueException {
         verificarFelicidadeEntreZeroECem(felicidade);
         verificarAlturaMenorQueZero(altura);
         verificarPesoMenorQueZero(peso);
         verificarNivelEntreZeroEUm(nivel);
+        verificarSePossuiAoMenosUmAtaque(ataque);
+        this.ataque = ataque;
         this.nome = nome;
         this.genero = genero;
         this.altura = altura;
         this.peso = peso;
         this.felicidade = felicidade;
         this.nivel = nivel;
+    }
+
+    private void verificarSePossuiAoMenosUmAtaque(Ataque ataque) throws NaoPossuiAtaqueException {
+        if(ataque == null) {
+            throw new NaoPossuiAtaqueException();
+        }
     }
 
     private void verificarNivelEntreZeroEUm(int nivel) throws NivelInvalidoException {

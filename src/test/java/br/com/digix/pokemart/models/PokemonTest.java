@@ -6,13 +6,14 @@ import org.junit.jupiter.api.Test;
 import br.com.digix.pokemart.builders.PokemonBuilder;
 import br.com.digix.pokemart.models.exceptions.AlturaInvalidaException;
 import br.com.digix.pokemart.models.exceptions.FelicidadeInvalidaException;
+import br.com.digix.pokemart.models.exceptions.NaoPossuiAtaqueException;
 import br.com.digix.pokemart.models.exceptions.NivelInvalidoException;
 import br.com.digix.pokemart.models.exceptions.PesoInvalidoException;
 
 public class PokemonTest {
 
     @Test
-    public void deve_criar_um_pokemon() throws FelicidadeInvalidaException, AlturaInvalidaException, PesoInvalidoException, NivelInvalidoException {
+    public void deve_criar_um_pokemon() throws Exception {
         // Arrange
         String nome = "Pikachu";
         char genero = 'F';
@@ -80,6 +81,15 @@ public class PokemonTest {
         Assertions.assertThrows(NivelInvalidoException.class, 
         ()-> {
             new PokemonBuilder().comNivel(101).construir();
+        });
+    }
+
+    @Test
+    public void deve_ter_pelo_menos_um_ataque() throws Exception {
+        // Action
+        Assertions.assertThrows(NaoPossuiAtaqueException.class,
+        ()-> {
+            new PokemonBuilder().semAtaque().construir();
         });
     }
 }
