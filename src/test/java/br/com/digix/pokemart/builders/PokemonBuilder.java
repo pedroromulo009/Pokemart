@@ -1,5 +1,8 @@
 package br.com.digix.pokemart.builders;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import br.com.digix.pokemart.models.Ataque;
 import br.com.digix.pokemart.models.Pokemon;
 import br.com.digix.pokemart.models.exceptions.AcuraciaInvalidaException;
@@ -18,10 +21,10 @@ public class PokemonBuilder {
     private float peso = 2.1f;
     private int felicidade = 100;
     private int nivel = 5;
-    private Ataque ataque;
+    private List<Ataque> ataques = new ArrayList<>();
 
     public PokemonBuilder() throws AcuraciaInvalidaException, ForcaInvalidaException {
-        this.ataque = new AtaqueBuilder().construir();
+        this.ataques.add(new AtaqueBuilder().construir());
     }
 
     public PokemonBuilder comFelicidade(int felicidade) {
@@ -45,12 +48,17 @@ public class PokemonBuilder {
     }
 
     public PokemonBuilder semAtaque() {
-        this.ataque = null;
+        this.ataques = new ArrayList<>();
         return this;
     }
 
     public Pokemon construir()
             throws FelicidadeInvalidaException, AlturaInvalidaException, PesoInvalidoException, NivelInvalidoException, NaoPossuiAtaqueException {
-        return new Pokemon(nome, genero, altura, peso, felicidade, nivel, ataque);
+        return new Pokemon(nome, genero, altura, peso, felicidade, nivel, ataques);
+    }
+
+    public PokemonBuilder comAtaques(List<Ataque> ataques) {
+        this.ataques = ataques;
+        return this;
     }
 }

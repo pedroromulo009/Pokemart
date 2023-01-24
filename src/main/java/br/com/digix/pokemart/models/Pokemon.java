@@ -1,5 +1,7 @@
 package br.com.digix.pokemart.models;
 
+import java.util.List;
+
 import br.com.digix.pokemart.models.exceptions.AlturaInvalidaException;
 import br.com.digix.pokemart.models.exceptions.FelicidadeInvalidaException;
 import br.com.digix.pokemart.models.exceptions.NaoPossuiAtaqueException;
@@ -16,15 +18,15 @@ public class Pokemon {
     private float peso;
     private int felicidade;
     private int nivel;
-    private Ataque ataque;
+    private List<Ataque> ataques;
 
-    public Pokemon(String nome, char genero, float altura, float peso, int felicidade, int nivel, Ataque ataque) throws FelicidadeInvalidaException, AlturaInvalidaException, PesoInvalidoException, NivelInvalidoException, NaoPossuiAtaqueException {
+    public Pokemon(String nome, char genero, float altura, float peso, int felicidade, int nivel, List<Ataque> ataques) throws FelicidadeInvalidaException, AlturaInvalidaException, PesoInvalidoException, NivelInvalidoException, NaoPossuiAtaqueException {
         verificarFelicidadeEntreZeroECem(felicidade);
         verificarAlturaMenorQueZero(altura);
         verificarPesoMenorQueZero(peso);
         verificarNivelEntreZeroEUm(nivel);
-        verificarSePossuiAoMenosUmAtaque(ataque);
-        this.ataque = ataque;
+        verificarSePossuiAoMenosUmAtaque(ataques);
+        this.ataques = ataques;
         this.nome = nome;
         this.genero = genero;
         this.altura = altura;
@@ -33,8 +35,8 @@ public class Pokemon {
         this.nivel = nivel;
     }
 
-    private void verificarSePossuiAoMenosUmAtaque(Ataque ataque) throws NaoPossuiAtaqueException {
-        if(ataque == null) {
+    private void verificarSePossuiAoMenosUmAtaque(List<Ataque> ataques) throws NaoPossuiAtaqueException {
+        if(ataques.size() == 0) {
             throw new NaoPossuiAtaqueException();
         }
     }
