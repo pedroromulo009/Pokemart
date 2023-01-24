@@ -12,6 +12,7 @@ import br.com.digix.pokemart.models.exceptions.ForcaInvalidaException;
 import br.com.digix.pokemart.models.exceptions.NaoPossuiAtaqueException;
 import br.com.digix.pokemart.models.exceptions.NivelInvalidoException;
 import br.com.digix.pokemart.models.exceptions.PesoInvalidoException;
+import br.com.digix.pokemart.models.exceptions.QuantidadeDeAtaquesInvalidaException;
 
 public class PokemonBuilder {
 
@@ -53,7 +54,7 @@ public class PokemonBuilder {
     }
 
     public Pokemon construir()
-            throws FelicidadeInvalidaException, AlturaInvalidaException, PesoInvalidoException, NivelInvalidoException, NaoPossuiAtaqueException {
+            throws FelicidadeInvalidaException, AlturaInvalidaException, PesoInvalidoException, NivelInvalidoException, NaoPossuiAtaqueException, QuantidadeDeAtaquesInvalidaException {
         return new Pokemon(nome, genero, altura, peso, felicidade, nivel, ataques);
     }
 

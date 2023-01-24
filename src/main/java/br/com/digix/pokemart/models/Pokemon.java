@@ -7,6 +7,7 @@ import br.com.digix.pokemart.models.exceptions.FelicidadeInvalidaException;
 import br.com.digix.pokemart.models.exceptions.NaoPossuiAtaqueException;
 import br.com.digix.pokemart.models.exceptions.NivelInvalidoException;
 import br.com.digix.pokemart.models.exceptions.PesoInvalidoException;
+import br.com.digix.pokemart.models.exceptions.QuantidadeDeAtaquesInvalidaException;
 import lombok.Getter;
 
 @Getter
@@ -20,12 +21,13 @@ public class Pokemon {
     private int nivel;
     private List<Ataque> ataques;
 
-    public Pokemon(String nome, char genero, float altura, float peso, int felicidade, int nivel, List<Ataque> ataques) throws FelicidadeInvalidaException, AlturaInvalidaException, PesoInvalidoException, NivelInvalidoException, NaoPossuiAtaqueException {
+    public Pokemon(String nome, char genero, float altura, float peso, int felicidade, int nivel, List<Ataque> ataques) throws FelicidadeInvalidaException, AlturaInvalidaException, PesoInvalidoException, NivelInvalidoException, NaoPossuiAtaqueException, QuantidadeDeAtaquesInvalidaException {
         verificarFelicidadeEntreZeroECem(felicidade);
         verificarAlturaMenorQueZero(altura);
         verificarPesoMenorQueZero(peso);
         verificarNivelEntreZeroEUm(nivel);
-        verificarSePossuiAoMenosUmAtaque(ataques);
+        verificarSeNaoPossuiAtaques(ataques);
+        verificarSePossuiMaisQueQuatroAtaques(ataques);
         this.ataques = ataques;
         this.nome = nome;
         this.genero = genero;
@@ -35,7 +37,13 @@ public class Pokemon {
         this.nivel = nivel;
     }
 
-    private void verificarSePossuiAoMenosUmAtaque(List<Ataque> ataques) throws NaoPossuiAtaqueException {
+    private void verificarSePossuiMaisQueQuatroAtaques(List<Ataque> ataques) throws QuantidadeDeAtaquesInvalidaException {
+        if(ataques.size() > 4) {
+            throw new QuantidadeDeAtaquesInvalidaException();
+        }
+    }
+
+    private void verificarSeNaoPossuiAtaques(List<Ataque> ataques) throws NaoPossuiAtaqueException {
         if(ataques.size() == 0) {
             throw new NaoPossuiAtaqueException();
         }
