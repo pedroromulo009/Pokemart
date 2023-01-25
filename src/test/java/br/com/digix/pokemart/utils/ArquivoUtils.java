@@ -1,18 +1,13 @@
 package br.com.digix.pokemart.utils;
 
-import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 
 public class ArquivoUtils {
     
-    public static byte[] abrirArquivo(String caminhoPath) throws IOException {
-        File caminho = new File(caminhoPath);
-        FileInputStream fileInputStream = new FileInputStream(caminho);
-        byte[] arrayDeBytes = new byte[(int)caminho.length()];
-        fileInputStream.read(arrayDeBytes);
-        fileInputStream.close();
-        return arrayDeBytes;
+    public static byte[] abrirArquivo(String caminho) throws IOException {
+        return Files.readAllBytes(Paths.get(caminho));
     }
     
 }
