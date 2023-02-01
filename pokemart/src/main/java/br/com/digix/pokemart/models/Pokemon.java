@@ -4,18 +4,31 @@ package br.com.digix.pokemart.models;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+
 import lombok.Getter;
-
+import lombok.NoArgsConstructor;
+@Entity
 @Getter
+@NoArgsConstructor
 public class Pokemon {
-
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
     private String nome;
     private char genero;
     private float altura;
     private float peso;
     private int felicidade;
     private int nivel;
+    @OneToMany(cascade = CascadeType.PERSIST)
     private List<Ataque> ataques;
+    @OneToMany(cascade = CascadeType.PERSIST)
     private List<Tipos> tipos;
     private int velocidade;
 
@@ -91,6 +104,8 @@ public class Pokemon {
     
         
     }
+
+
     
 }
     

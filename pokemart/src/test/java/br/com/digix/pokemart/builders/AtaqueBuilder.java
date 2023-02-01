@@ -47,5 +47,10 @@ public class AtaqueBuilder {
         this.nome = nome;
         return this;
     }
+
+    public AtaqueBuilder comCategoria(Categoria categoria) {
+        this.categoria = categoria;
+        return this;
+    }
     
 }

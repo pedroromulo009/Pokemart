@@ -10,6 +10,7 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 
 import br.com.digix.pokemart.builders.AtaqueBuilder;
 import br.com.digix.pokemart.models.Ataque;
+import br.com.digix.pokemart.models.Categoria;
 
 
 @DataJpaTest
@@ -41,7 +42,7 @@ public class AtaqueRepositoryTest {
 
     @Test
     public void deve_buscar_pelo_nome() throws Exception {
-        String nome = "Pikachu";
+        String nome = "Electric";
         Ataque ataque = new AtaqueBuilder().comNome(nome).construir();
         AtaqueRepository.save(ataque);
 
@@ -49,6 +50,19 @@ public class AtaqueRepositoryTest {
         
         Assertions.assertTrue(AtaqueRetornado.contains(ataque));
 
+
+
+
+    }
+
+    @Test
+    public void deve_buscar_po_categoria() throws Exception {
+        Categoria categoria = Categoria.ESPECIAL;
+        Ataque ataque = new AtaqueBuilder().comCategoria(categoria).construir();
+        AtaqueRepository.save(ataque);
+
+        List<Ataque> AtaqueRetornado = AtaqueRepository.findByCategoria(categoria);
+        Assertions.assertTrue(AtaqueRetornado.contains(ataque));
 
     }
 

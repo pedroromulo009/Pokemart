@@ -84,6 +84,11 @@ public class PokemonBuilder {
         this.velocidade = velocidade;
         return this;
     }
+
+    public PokemonBuilder comNome(String nome) {
+        this.nome = nome;
+        return this;
+    }
     
 
     
